@@ -19,6 +19,37 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
   />
   <style>
+     /* Gaya untuk gambar utama */
+     .zoomable {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .zoomable:hover {
+      transform: scale(1.05);
+    }
+
+    /* Gaya untuk overlay */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .overlay img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .overlay:target {
+      display: flex;
+    }
     /* Watermark Styling */
     .watermark {
       position:fixed;
@@ -115,7 +146,11 @@
           <blockquote>
             "Jurusan Elektro, Informatika dan Bisnis"
           </blockquote>
-          <img class="fragment fade-up" src="assets/images/roadmap.png" alt="Roadmap ITK 2025" style="width:100%; max-width:900px; margin-top:20px;">
+          <img id="roadmap" class="zoomable fragment fade-up" src="assets/images/roadmap.png" alt="Roadmap ITK 2025" style="width:100%; max-width:900px; margin-top:20px;" onclick="zoomImage('roadmap')">
+          <!-- Overlay untuk Zoom -->
+            <div id="zoom-overlay" class="overlay" onclick="closeZoom()">
+                <img id="zoom-image" src="" alt="Zoomed Roadmap">
+            </div>
         </section>
       </section>
 
@@ -532,6 +567,20 @@
         39: 'next' // Right arrow
       }
     });
+    // Fungsi untuk zoom gambar
+  function zoomImage(imageId) {
+    const imgSrc = document.getElementById(imageId).src;
+    const zoomOverlay = document.getElementById('zoom-overlay');
+    const zoomImage = document.getElementById('zoom-image');
+    zoomImage.src = imgSrc;
+    zoomOverlay.style.display = 'flex';
+  }
+
+  // Fungsi untuk menutup zoom
+  function closeZoom() {
+    const zoomOverlay = document.getElementById('zoom-overlay');
+    zoomOverlay.style.display = 'none';
+  }
   </script>
 </body>
 </html>
