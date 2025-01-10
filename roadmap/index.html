@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>ITK Roadmap Presentation</title>
+  <link rel="icon" href="assets/images/icon.png" type="image/png">
   <!-- Reveal.js CSS -->
   <link
     rel="stylesheet"
@@ -18,6 +19,20 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
   />
   <style>
+    /* Watermark Styling */
+    .watermark {
+      position:fixed;
+      bottom: 15px;
+      right: 15px;
+      font-size: 25px;
+      color: rgba(255,255,255,0.3);
+      z-index: 1000;
+      font-style: italic;
+    }
+    .watermark img {
+      height: 25px;
+      vertical-align: middle;
+    }
     /* Custom Styles */
     .reveal section img {
       border: none !important;
@@ -68,6 +83,10 @@
   </style>
 </head>
 <body>
+    <div class="watermark">
+        <img src="assets/images/icon.png" alt="Logo Universitas">
+        © <script>document.write(new Date().getFullYear());</script> Aidil Saputra Kirsan
+      </div>
   <div class="reveal">
     <div class="slides">
 
@@ -75,8 +94,9 @@
       <!--         TITLE SLIDE     -->
       <!-- ======================== -->
       <section>
-        <h2>ROADMAP ITK 2025</h2>
-        <h4>Smart City & Energi Terbarukan</h4>
+        <h2><i class="fas fa-road" style="color:#e53935;"></i> ROADMAP</h2>
+        <h3><i class="fas fa-graduation-cap" style="color:#2196f3;"></i> Jurusan Elektro, Informatika dan Bisnis</h3>
+        <h4><i class="fas fa-solar-panel" style="color:#ff9800;"></i> Smart City & Energi Terbarukan</h4>
         <p class="fragment fade-up">Kolaborasi 4 Program Studi</p>
         <ul class="fragment fade-up">
           <li>Teknik Elektro</li>
@@ -91,16 +111,11 @@
       <!-- ======================== -->
       <section data-background-gradient="linear-gradient(to bottom, #283593, #1565C0)">
         <section>
-          <h3>Visi ITK 2025</h3>
-          <blockquote class="fragment">
-            "Menjadi perguruan tinggi yang unggul dan berperan aktif dalam pembangunan nasional melalui pemberdayaan potensi daerah Kalimantan."
+            <h3><i class="fas fa-binoculars" style="color:#4caf50;"></i> Roadmap</h3>
+          <blockquote>
+            "Jurusan Elektro, Informatika dan Bisnis"
           </blockquote>
-        </section>
-        <section>
-          <h3>Visi LPPM ITK</h3>
-          <blockquote class="fragment">
-            "Menjadi lembaga penelitian dan pengabdian kepada masyarakat yang unggul, terpercaya dalam bidang IPTEK serta mampu berperan aktif dalam pembangunan daerah."
-          </blockquote>
+          <img class="fragment fade-up" src="assets/images/roadmap.png" alt="Roadmap ITK 2025" style="width:100%; max-width:900px; margin-top:20px;">
         </section>
       </section>
 
@@ -108,56 +123,61 @@
       <!--   STRATEGY OVERVIEW     -->
       <!-- ======================== -->
       <section>
-        <h3>Garis Besar Strategi</h3>
-        <div class="r-stack">
-          <div class="fragment fade-in-then-out">
-            <h4>Penelitian dan Inovasi</h4>
-            <ul class="text-left">
-              <li>Riset unggulan lintas prodi</li>
-              <li>Publikasi ilmiah & HKI</li>
-              <li>Prototipe & Startup berbasis teknologi</li>
-            </ul>
-          </div>
-          <div class="fragment fade-in-then-out">
-            <h4>Pengabdian & Kerja Sama</h4>
-            <ul class="text-left">
-              <li>Program pendampingan</li>
-              <li>Jejaring kolaborasi</li>
-              <li>MoU dengan pemerintah daerah/industri</li>
-            </ul>
-          </div>
-          <div class="fragment fade-in-then-out">
-            <h4>Penguatan SDM</h4>
-            <ul class="text-left">
-              <li>Sertifikasi & pelatihan</li>
-              <li>Lulusan berdaya saing</li>
-              <li>Program sabbatical untuk dosen</li>
-            </ul>
-          </div>
-          <div class="fragment fade-in-then-out">
-            <h4>Pembangunan Infrastruktur</h4>
-            <ul class="text-left">
-              <li>Laboratorium riset terpadu</li>
-              <li>Sarana IoT, AI, Data Center, Smart Grid Mini Plant</li>
-            </ul>
-          </div>
-          <div class="fragment fade-in">
-            <h4>Penerapan & Komersialisasi</h4>
-            <ul class="text-left">
-              <li>Implementasi hasil riset di kampus</li>
-              <li>Startup & spin-off berbasis riset</li>
-            </ul>
-          </div>
-        </div>
+        <h3><i class="fas fa-bullseye" style="color:#ff5722;"></i> Garis Besar Strategi</h3>
+      
+        <!-- Slide Vertikal -->
+        <section>
+          <h4><i class="fas fa-flask" style="color:#4caf50;"></i> Penelitian dan Inovasi</h4>
+          <ul class="text-left">
+            <li>Riset unggulan lintas prodi</li>
+            <li>Publikasi ilmiah & HKI</li>
+            <li>Prototipe & Startup berbasis teknologi</li>
+          </ul>
+        </section>
+      
+        <section>
+          <h4><i class="fas fa-handshake" style="color:#2196f3;"></i> Pengabdian & Kerja Sama</h4>
+          <ul class="text-left">
+            <li>Program pendampingan</li>
+            <li>Jejaring kolaborasi</li>
+            <li>MoU dengan pemerintah daerah/industri</li>
+          </ul>
+        </section>
+      
+        <section>
+          <h4><i class="fas fa-user-shield" style="color:#ff9800;"></i> Penguatan SDM</h4>
+          <ul class="text-left">
+            <li>Sertifikasi & pelatihan</li>
+            <li>Lulusan berdaya saing</li>
+            <li>Program sabbatical untuk dosen</li>
+          </ul>
+        </section>
+      
+        <section>
+          <h4><i class="fas fa-cogs" style="color:#673ab7;"></i> Pembangunan Infrastruktur</h4>
+          <ul class="text-left">
+            <li>Laboratorium riset terpadu</li>
+            <li>Sarana IoT, AI, Data Center, Smart Grid Mini Plant</li>
+          </ul>
+        </section>
+      
+        <section>
+          <h4><i class="fas fa-rocket" style="color:#e91e63;"></i> Penerapan & Komersialisasi</h4>
+          <ul class="text-left">
+            <li>Implementasi hasil riset di kampus</li>
+            <li>Startup & spin-off berbasis riset</li>
+          </ul>
+        </section>
       </section>
-
+      
+      
       <!-- ======================== -->
       <!--        TIMELINE         -->
       <!-- ======================== -->
 
       <!-- Slide pengantar timeline -->
       <section>
-        <h3>Timeline</h3>
+        <h3><i class="fas fa-calendar-alt" style="color:#00acc1;"></i> Timeline</h3>
         <p>Roadmap pengembangan Smart City & Energi Terbarukan dari Tahun 1 s/d Tahun 5.</p>
       </section>
 
@@ -396,7 +416,7 @@
       <!--   KETERKAITAN 4 PRODI   -->
       <!-- ======================== -->
       <section data-background-transition="zoom">
-        <h3>Keterkaitan Empat Prodi dalam Fokus Smart City & Energi</h3>
+        <h3><i class="fas fa-network-wired" style="color:#00acc1;"></i>Keterkaitan Empat Prodi dalam Fokus Smart City & Energi</h3>
         <div class="r-stack">
           <!-- Teknik Elektro -->
           <div class="fragment fade-in-then-out">
@@ -445,24 +465,12 @@
         </div>
       </section>
 
-      <!-- ======================== -->
-      <!--     SUCCESS FACTORS     -->
-      <!-- ======================== -->
-      <section data-background-transition="slide">
-        <h3>Kunci Kesuksesan</h3>
-        <ul class="fragment fade-up">
-          <li>Tim Ahli Lintas Prodi</li>
-          <li>Kolaborasi Stakeholder</li>
-          <li>Pendanaan Berkelanjutan</li>
-          <li>Monitoring & Evaluasi</li>
-        </ul>
-      </section>
 
       <!-- ======================== -->
       <!--         CLOSING         -->
       <!-- ======================== -->
       <section data-background-gradient="radial-gradient(circle, #4527A0, #283593)">
-        <h3>Terima Kasih</h3>
+        <h3><i class="fas fa-heart" style="color:#f44336;"></i> Terima Kasih</h3>
         <p class="fragment">Menuju ITK yang Unggul dan Berdaya Saing</p>
       </section>
 
