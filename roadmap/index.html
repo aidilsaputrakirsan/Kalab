@@ -1,287 +1,529 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ITK Roadmap Presentation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/night.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .reveal section img {
-            border: none !important;
-            box-shadow: none !important;
-        }
-        .custom-fragment {
-            opacity: 0;
-            transition: all 0.8s ease;
-        }
-        .custom-fragment.visible {
-            opacity: 1;
-        }
-        .text-left {
-            text-align: left;
-        }
-        .smaller-text {
-            font-size: 0.8em;
-        }
-        .highlight {
-            color: #42affa;
-        }
-        .r-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>ITK Roadmap Presentation</title>
+  <!-- Reveal.js CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/night.min.css"
+  />
+  <!-- Font Awesome for Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  <style>
+    /* Custom Styles */
+    .reveal section img {
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .custom-fragment {
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+    .custom-fragment.visible {
+      opacity: 1;
+    }
+
+    .text-left {
+      text-align: left;
+    }
+    .smaller-text {
+      font-size: 0.8em;
+    }
+    .highlight {
+      color: #42affa;
+    }
+    .r-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Contoh pewarnaan ikon dengan inline style bisa juga di-override di sini 
+       Jika ingin konsisten, buatlah class seperti:
+       .icon-red { color: #e53935; }
+       .icon-blue { color: #1e88e5; }
+       ... dll.
+    */
+
+    /* Responsiveness */
+    @media (max-width: 800px) {
+      .r-stack {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="reveal">
-        <div class="slides">
-            <!-- Title Slide -->
-            <section data-auto-animate>
-                <h2>ROADMAP ITK 2025</h2> <!-- h1 → h2 -->
-                <h4>Smart City & Energi Terbarukan</h4> <!-- h3 → h4 -->
-                <p class="fragment fade-up">Kolaborasi 4 Program Studi</p>
-                <ul class="fragment fade-up">
-                    <li>Teknik Elektro</li>
-                    <li>Informatika</li>
-                    <li>Sistem Informasi</li>
-                    <li>Bisnis Digital</li>
-                </ul>
-            </section>
+  <div class="reveal">
+    <div class="slides">
 
-            <!-- Vision Section -->
-            <section data-background-gradient="linear-gradient(to bottom, #283593, #1565C0)">
-                <section>
-                    <h3>Visi ITK 2025</h3> <!-- h2 → h3 -->
-                    <blockquote class="fragment">
-                        "Menjadi perguruan tinggi yang unggul dan berperan aktif dalam pembangunan nasional melalui pemberdayaan potensi daerah Kalimantan."
-                    </blockquote>
-                </section>
-                <section>
-                    <h3>Visi LPPM ITK</h3> <!-- h2 → h3 -->
-                    <blockquote class="fragment">
-                        "Menjadi lembaga penelitian dan pengabdian kepada masyarakat yang unggul, terpercaya dalam bidang IPTEK serta mampu berperan aktif dalam pembangunan daerah."
-                    </blockquote>
-                </section>
-            </section>
+      <!-- ======================== -->
+      <!--         TITLE SLIDE     -->
+      <!-- ======================== -->
+      <section>
+        <h2>ROADMAP ITK 2025</h2>
+        <h4>Smart City & Energi Terbarukan</h4>
+        <p class="fragment fade-up">Kolaborasi 4 Program Studi</p>
+        <ul class="fragment fade-up">
+          <li>Teknik Elektro</li>
+          <li>Informatika</li>
+          <li>Sistem Informasi</li>
+          <li>Bisnis Digital</li>
+        </ul>
+      </section>
 
-            <!-- Strategy Overview -->
-            <section>
-                <h3>Garis Besar Strategi</h3> <!-- h2 → h3 -->
-                <div class="r-stack">
-                    <div class="fragment fade-in-then-out">
-                        <h4>Penelitian dan Inovasi</h4> <!-- h3 → h4 -->
-                        <ul class="text-left">
-                            <li>Riset unggulan lintas prodi</li>
-                            <li>Publikasi ilmiah & HKI</li>
-                        </ul>
-                    </div>
-                    <div class="fragment fade-in-then-out">
-                        <h4>Pengabdian & Kerja Sama</h4> <!-- h3 → h4 -->
-                        <ul class="text-left">
-                            <li>Program pendampingan</li>
-                            <li>Jejaring kolaborasi</li>
-                        </ul>
-                    </div>
-                    <div class="fragment fade-in-then-out">
-                        <h4>Penguatan SDM</h4> <!-- h3 → h4 -->
-                        <ul class="text-left">
-                            <li>Sertifikasi & pelatihan</li>
-                            <li>Lulusan berdaya saing</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+      <!-- ======================== -->
+      <!--        VISI SECTION     -->
+      <!-- ======================== -->
+      <section data-background-gradient="linear-gradient(to bottom, #283593, #1565C0)">
+        <section>
+          <h3>Visi ITK 2025</h3>
+          <blockquote class="fragment">
+            "Menjadi perguruan tinggi yang unggul dan berperan aktif dalam pembangunan nasional melalui pemberdayaan potensi daerah Kalimantan."
+          </blockquote>
+        </section>
+        <section>
+          <h3>Visi LPPM ITK</h3>
+          <blockquote class="fragment">
+            "Menjadi lembaga penelitian dan pengabdian kepada masyarakat yang unggul, terpercaya dalam bidang IPTEK serta mampu berperan aktif dalam pembangunan daerah."
+          </blockquote>
+        </section>
+      </section>
 
-            <!-- Timeline Section - Year 1 -->
-            <section data-auto-animate>
-                <h3><i class="fas fa-road"></i> Tahun 1: Fundamental & Penyelarasan</h3> <!-- h2 → h3 -->
-                <div class="timeline">
-                    <div class="fragment fade-up">
-                        <h4><i class="fas fa-plug"></i> Teknik Elektro</h4> <!-- h3 → h4 -->
-                        <ul class="smaller-text text-left">
-                            <li>Pemetaan riset EBT</li>
-                            <li>Identifikasi infrastruktur kelistrikan</li>
-                        </ul>
-                    </div>
-                    <div class="fragment fade-up">
-                        <h4><i class="fas fa-laptop-code"></i> Informatika</h4> <!-- h3 → h4 -->
-                        <ul class="smaller-text text-left">
-                            <li>Riset IoT, AI, Big Data</li>
-                            <li>Pengembangan kurikulum</li>
-                        </ul>
-                    </div>
-                    <div class="fragment fade-up">
-                        <h4><i class="fas fa-database"></i> Sistem Informasi</h4> <!-- h3 → h4 -->
-                        <ul class="smaller-text text-left">
-                            <li>Tata kelola data</li>
-                            <li>Blueprint kebutuhan informasi</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Timeline Section - Year 2 -->
-            <section data-auto-animate>
-                <h3><i class="fas fa-layer-group"></i> Tahun 2: Penguatan Riset & Infrastruktur</h3> <!-- h2 → h3 -->
-                <div class="r-stack">
-                    <div class="fragment fade-in-then-out">
-                        <h4><i class="fas fa-flask"></i> Pengembangan Lab</h4> <!-- h3 → h4 -->
-                        <ul class="text-left">
-                            <li>Smart City Lab</li>
-                            <li>Smart Energy Lab</li>
-                        </ul>
-                    </div>
-                    <div class="fragment fade-in-then-out">
-                        <h4><i class="fas fa-users"></i> Kolaborasi</h4> <!-- h3 → h4 -->
-                        <ul class="text-left">
-                            <li>Proposal riset kolaboratif</li>
-                            <li>Studi kelayakan EBT</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Timeline Section - Year 3 -->
-            <section data-auto-animate>
-                <h3><i class="fas fa-rocket"></i> Tahun 3: Implementasi & Kolaborasi</h3> <!-- h2 → h3 -->
-                <div class="fragment fade-up">
-                    <h4><i class="fas fa-city"></i> Pilot Project Smart City</h4> <!-- h3 → h4 -->
-                    <ul class="text-left">
-                        <li>Smart Governance</li>
-                        <li>Smart Environment</li>
-                    </ul>
-                </div>
-                <div class="fragment fade-up">
-                    <h4><i class="fas fa-solar-panel"></i> Pilot Project EBT</h4> <!-- h3 → h4 -->
-                    <ul class="text-left">
-                        <li>Instalasi panel surya</li>
-                        <li>Sistem monitoring IoT</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Timeline Section - Year 4 -->
-            <section data-auto-animate>
-                <h3><i class="fas fa-expand-arrows-alt"></i> Tahun 4: Ekspansi & Optimalisasi</h3> <!-- h2 → h3 -->
-                <div class="r-stack">
-                    <div class="fragment fade-in-then-out">
-                        <h4><i class="fas fa-project-diagram"></i> Ekspansi Project</h4> <!-- h3 → h4 -->
-                        <ul class="text-left">
-                            <li>Perluasan pilot project</li>
-                            <li>Optimalisasi sistem integrasi</li>
-                        </ul>
-                    </div>
-                    <div class="fragment fade-in-then-out">
-                        <h4><i class="fas fa-graduation-cap"></i> Reputasi Akademik</h4> <!-- h3 → h4 -->
-                        <ul class="text-left">
-                            <li>Workshop internasional</li>
-                            <li>Publikasi Scopus</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Timeline Section - Year 5 -->
-            <section data-auto-animate>
-                <h3><i class="fas fa-flag-checkered"></i> Tahun 5: Kemandirian & Keberlanjutan</h3> <!-- h2 → h3 -->
-                <div class="fragment fade-up">
-                    <h4><i class="fas fa-chart-line"></i> Kemandirian</h4> <!-- h3 → h4 -->
-                    <ul class="text-left">
-                        <li>Komersialisasi inovasi</li>
-                        <li>Inkubator bisnis digital</li>
-                    </ul>
-                </div>
-                <div class="fragment fade-up">
-                    <h4><i class="fas fa-globe"></i> Kolaborasi Internasional</h4> <!-- h3 → h4 -->
-                    <ul class="text-left">
-                        <li>Joint research</li>
-                        <li>Pengakuan internasional</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Program Integration -->
-            <section data-background-transition="zoom">
-                <h3>Keterkaitan Program Studi</h3> <!-- h2 → h3 -->
-                <div class="r-stack">
-                    <img src="/api/placeholder/800/600" alt="Integration Diagram" class="fragment fade-out" data-fragment-index="0">
-                    <div class="fragment fade-in" data-fragment-index="0">
-                        <div class="text-left">
-                            <h4 class="highlight">Teknik Elektro</h4> <!-- h3 → h4 -->
-                            <ul>
-                                <li>Smart Grid & Microgrid</li>
-                                <li>Sensor & IoT Hardware</li>
-                                <li>Pembangkit EBT</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Success Factors -->
-            <section data-background-transition="slide">
-                <h3>Kunci Kesuksesan</h3> <!-- h2 → h3 -->
-                <ul class="fragment fade-up">
-                    <li>Tim Ahli Lintas Prodi</li>
-                    <li>Kolaborasi Stakeholder</li>
-                    <li>Pendanaan Berkelanjutan</li>
-                    <li>Monitoring & Evaluasi</li>
-                </ul>
-            </section>
-
-            <!-- Closing -->
-            <section data-background-gradient="radial-gradient(circle, #4527A0, #283593)">
-                <h3>Terima Kasih</h3> <!-- h2 → h3 -->
-                <p class="fragment">Menuju ITK yang Unggul dan Berdaya Saing</p>
-            </section>
-
+      <!-- ======================== -->
+      <!--   STRATEGY OVERVIEW     -->
+      <!-- ======================== -->
+      <section>
+        <h3>Garis Besar Strategi</h3>
+        <div class="r-stack">
+          <div class="fragment fade-in-then-out">
+            <h4>Penelitian dan Inovasi</h4>
+            <ul class="text-left">
+              <li>Riset unggulan lintas prodi</li>
+              <li>Publikasi ilmiah & HKI</li>
+              <li>Prototipe & Startup berbasis teknologi</li>
+            </ul>
+          </div>
+          <div class="fragment fade-in-then-out">
+            <h4>Pengabdian & Kerja Sama</h4>
+            <ul class="text-left">
+              <li>Program pendampingan</li>
+              <li>Jejaring kolaborasi</li>
+              <li>MoU dengan pemerintah daerah/industri</li>
+            </ul>
+          </div>
+          <div class="fragment fade-in-then-out">
+            <h4>Penguatan SDM</h4>
+            <ul class="text-left">
+              <li>Sertifikasi & pelatihan</li>
+              <li>Lulusan berdaya saing</li>
+              <li>Program sabbatical untuk dosen</li>
+            </ul>
+          </div>
+          <div class="fragment fade-in-then-out">
+            <h4>Pembangunan Infrastruktur</h4>
+            <ul class="text-left">
+              <li>Laboratorium riset terpadu</li>
+              <li>Sarana IoT, AI, Data Center, Smart Grid Mini Plant</li>
+            </ul>
+          </div>
+          <div class="fragment fade-in">
+            <h4>Penerapan & Komersialisasi</h4>
+            <ul class="text-left">
+              <li>Implementasi hasil riset di kampus</li>
+              <li>Startup & spin-off berbasis riset</li>
+            </ul>
+          </div>
         </div>
-    </div>
+      </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
-    <script>
-        Reveal.initialize({
-            hash: true,
-            responsive: true,
-            touch: true,
-            mouseWheel: true,
-            transition: 'slide',
-            backgroundTransition: 'fade',
-            parallaxBackgroundImage: '',
-            autoSlide: 0,
-            controls: true,
-            progress: true,
-            center: true,
-            slideNumber: 'c/t',
-            overview: true,
-            width: 1200,
-            height: 700,
-            margin: 0.04,
-            minScale: 0.2,
-            maxScale: 2.0,
-            plugins: [
-                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/zoom/zoom.min.js', async: true },
-                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js', async: true },
-                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/search/search.min.js', async: true },
-                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.min.js', async: true }
-            ],
-            keyboard: {
-                13: 'next', // Enter key
-                27: function() {}, // Esc key (no action)
-                32: function() { Reveal.toggleOverview(); }, // Space key toggles overview
-                37: 'prev', // Left arrow
-                39: 'next', // Right arrow
-            },
-            // Additional configurations if needed
-        });
-    </script>
+      <!-- ======================== -->
+      <!--        TIMELINE         -->
+      <!-- ======================== -->
+
+      <!-- Slide pengantar timeline -->
+      <section>
+        <h3>Timeline</h3>
+        <p>Roadmap pengembangan Smart City & Energi Terbarukan dari Tahun 1 s/d Tahun 5.</p>
+      </section>
+
+      <!-- ======================== -->
+      <!--   TAHUN 1 (Horizontal)  -->
+      <!-- ======================== -->
+      <section>
+        <!-- Ikon berwarna menggunakan style="color:#...;" -->
+        <h3><i class="fas fa-road" style="color:#e53935;"></i> Tahun 1: Fundamental & Penyelarasan</h3>
+        
+        <!-- Sub-slide Vertical 1 -->
+        <section>
+          <h4><i class="fas fa-plug" style="color:#4caf50;"></i> Teknik Elektro</h4>
+          <ul class="smaller-text text-left">
+            <li>Memetakan riset-riset EBT (energi surya, biomassa, angin, dll.) yang potensial untuk dikembangkan di laboratorium.</li>
+            <li>Mengidentifikasi kebutuhan infrastruktur kelistrikan & instrumentasi untuk mendukung Smart City (misal sensor city, smart lighting, dsb.).</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 2 -->
+        <section>
+          <h4><i class="fas fa-laptop-code" style="color:#2196f3;"></i> Informatika</h4>
+          <ul class="smaller-text text-left">
+            <li>Menyusun topik penelitian awal dalam bidang IoT, AI, Big Data untuk pengembangan sistem Smart City (misal sistem monitoring, smart governance).</li>
+            <li>Kurikulum yang mendukung pemrograman dan arsitektur big data/analitik data.</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 3 -->
+        <section>
+          <h4><i class="fas fa-database" style="color:#ff9800;"></i> Sistem Informasi</h4>
+          <ul class="smaller-text text-left">
+            <li>Membangun kerangka tata kelola data dan integrasi sistem (governance & policy) yang relevan untuk Smart City.</li>
+            <li> Menyusun blueprint kebutuhan informasi (SI) di sektor pemerintahan dan industri.</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 4 -->
+        <section>
+          <h4><i class="fas fa-business-time" style="color:#9c27b0;"></i> Bisnis Digital</h4>
+          <ul class="smaller-text text-left">
+            <li>Mengidentifikasi model bisnis digital potensial di sektor Smart City (e-commerce, e-tourism, digital finance, dsb.)</li>
+            <li>Workshop tentang digital entrepreneurship dan business model canvas terkait Energi (mis. energi terbarukan sebagai peluang bisnis).</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 5 -->
+        <section>
+          <h4>Output Utama di Tahun 1</h4>
+          <ul class="smaller-text text-left">
+            <li>Peta penelitian terpadu per prodi</li>
+            <li>Rencana pengembangan laboratorium kolaboratif</li>
+            <li>Blueprint arsitektur SI/ICT untuk Smart City dan Energi</li>
+            <li>Kerja sama awal (MoU) dengan pemerintah daerah/industri</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- ======================== -->
+      <!--   TAHUN 2 (Horizontal)  -->
+      <!-- ======================== -->
+      <section>
+        <h3><i class="fas fa-layer-group" style="color:#43a047;"></i> Tahun 2: Penguatan Riset & Infrastruktur</h3>
+        
+        <!-- Sub-slide Vertical 1 -->
+        <section>
+          <h4><i class="fas fa-flask" style="color:#f4511e;"></i> Pengembangan Lab</h4>
+          <ul class="text-left">
+            <li>Smart City Lab (dilengkapi perangkat IoT, sensor, platform Big Data)</li>
+            <li>Smart Energy Lab (uji coba panel surya, turbin angin mini, sistem penyimpanan energi, dsb.)</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 2 -->
+        <section>
+          <h4><i class="fas fa-users" style="color:#03a9f4;"></i>Kolaborasi Penelitian dan Hibah</h4>
+          <ul class="text-left">
+            <li>Mendorong proposal riset kolaboratif lintas prodi untuk hibah nasional/internasional di bidang Smart City dan Energi</li>
+            <li>Studi kelayakan untuk implementasi EBT di wilayah kampus dan masyarakat sekitar</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 3 -->
+        <section>
+            <h4><i class="fas fa-users" style="color:#03a9f4;"></i>Kompetensi SDM</h4>
+            <ul class="text-left">
+              <li>Sertifikasi bagi dosen/mahasiswa (misal: sertifikasi IoT, AI, Cloud, Energi Terbarukan)</li>
+              <li>Pelatihan digital marketing untuk mahasiswa Bisnis Digital yang fokus pada smart economy</li>
+            </ul>
+          </section>
+
+        <!-- Sub-slide Vertical 4 -->
+        <section>
+          <h4>Output Utama di Tahun 2</h4>
+          <ul class="smaller-text text-left">
+            <li>Terbentuknya laboratorium riset terpadu (Smart City & Smart Energy Lab)</li>
+            <li>Hibah riset lintas prodi yang didanai</li>
+            <li>Meningkatnya jumlah publikasi & prosiding konferensi internasional</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- ======================== -->
+      <!--   TAHUN 3 (Horizontal)  -->
+      <!-- ======================== -->
+      <section>
+        <h3><i class="fas fa-rocket" style="color:#ffb300;"></i> Tahun 3: Implementasi Awal (Pilot Project) & Peningkatan Kolaborasi</h3>
+        
+        <!-- Sub-slide Vertical 1 -->
+        <section>
+          <h4><i class="fas fa-city" style="color:#9c27b0;"></i>Pilot Project Smart City</h4>
+          <ul class="text-left">
+            <li>Bekerja sama dengan Pemda/Pemkot setempat untuk implementasi aplikasi Smart Governance (mis. e-government, e-public service)</li>
+            <li>Uji coba smart environment di kampus (sistem pemantauan kualitas udara, pengelolaan sampah digital, dsb.)</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 2 -->
+        <section>
+          <h4><i class="fas fa-solar-panel" style="color:#8bc34a;"></i>Pilot Project Energi Terbarukan</h4>
+          <ul class="text-left">
+            <li>Pemasangan prototipe panel surya, turbin angin mini, atau mikro-hidro di area kampus/domisili sekitar.</li>
+            <li>Integrasi sistem monitoring berbasis IoT & SI untuk efisiensi energi</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 3 -->
+        <section>
+          <h4><i class="fas fa-network-wired" style="color:#2196f3;"></i>Integrasi Sistem Informasi & Bisnis Digital</h4>
+          <ul class="text-left">
+            <li>Mengembangkan platform integrasi data (big data platform) untuk analisis potensi bisnis di sektor pariwisata (smart branding) dan ekonomi kreatif</li>
+            <li>Merintis startup mahasiswa/dosen di bidang smart solution (mis. transportasi & logistik, e-health, dsb.)</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 4 -->
+        <section>
+          <h4>Output Utama di Tahun 3</h4>
+          <ul class="smaller-text text-left">
+            <li>Pilot project Smart City (minimal di lingkungan kampus dan 1 wilayah mitra)</li>
+            <li>Pilot project EBT berfungsi & tervalidasi</li>
+            <li>Terbentuknya minimal 1–2 startup/spin-off kolaboratif</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- ======================== -->
+      <!--   TAHUN 4 (Horizontal)  -->
+      <!-- ======================== -->
+      <section>
+        <h3><i class="fas fa-expand-arrows-alt" style="color:#1e88e5;"></i> Tahun 4: Ekspansi, Optimalisasi, dan Publikasi</h3>
+        
+        <!-- Sub-slide Vertical 1 -->
+        <section>
+          <h4><i class="fas fa-project-diagram" style="color:#ff5722;"></i> Ekspansi Proyek Smart City</h4>
+          <ul class="text-left">
+            <li>Memperluas jangkauan pilot project ke beberapa kelurahan/kecamatan</li>
+            <li>Optimalisasi sistem integrasi data & analitik (tata kelola, kesehatan, transportasi, dsb.)</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 2 -->
+        <section>
+          <h4><i class="fas fa-solar-panel" style="color:#43a047;"></i> Optimalisasi Pembangkit EBT (Energi Terbarukan)</h4>
+          <ul class="text-left">
+            <li>Membangun mini-grid system di kampus untuk riset lanjutan (mis. Microgrid Management System)</li>
+            <li>Menjalin kerja sama dengan perusahaan energi (PLN, startup EBT) untuk mengujicobakan teknologi kampus</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 3 -->
+        <section>
+          <h4><i class="fas fa-graduation-cap" style="color:#ff9800;"></i>Peningkatan Reputasi Akademik</h4>
+          <ul class="text-left">
+            <li>Workshop nasional/internasional di bidang Smart City & EBT, diinisiasi oleh Jurusan (Elektro, Informatika, Sistem Informasi, Bisnis Digital)</li>
+            <li>Publikasi terindeks Scopus, pengajuan paten/HKI atas inovasi yang sudah dihasilkan.</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 4 -->
+        <section>
+          <h4>Output Utama di Tahun 4</h4>
+          <ul class="smaller-text text-left">
+            <li>Sistem Smart City lebih mature dan digunakan secara nyata oleh pemerintah daerah/masyarakat</li>
+            <li>Jejaring industri yang kuat, menghasilkan MoA (Memorandum of Agreement) spesifik untuk riset lanjutan</li>
+            <li>Peningkatan jumlah publikasi internasional, paten, dan innovation product</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- ======================== -->
+      <!--   TAHUN 5 (Horizontal)  -->
+      <!-- ======================== -->
+      <section>
+        <h3><i class="fas fa-flag-checkered" style="color:#673ab7;"></i> Tahun 5: Kemandirian, Komersialisasi, dan Keberlanjutan</h3>
+        
+        <!-- Sub-slide Vertical 1 -->
+        <section>
+          <h4><i class="fas fa-chart-line" style="color:#e91e63;"></i> Kemandirian Teknologi & Bisnis</h4>
+          <ul class="text-left">
+            <li>Hasil inovasi siap dikomersialisasikan (kemitraan industri, startup mandiri, lisensi paten)</li>
+            <li>Membangun ekosistem wirausaha/inkubator bisnis digital di kampus untuk menampung spin-off berbasis riset</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 2 -->
+        <section>
+          <h4><i class="fas fa-globe" style="color:#00acc1;"></i> Kolaborasi Internasional & Pengakuan</h4>
+          <ul class="text-left">
+            <li>Meningkatkan kolaborasi riset dan konferensi internasional dalam bidang Smart City dan Energi (joint research, dual degree, dsb.)</li>
+            <li>Mendapatkan pengakuan/award nasional atau internasional atas keberhasilan proyek</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 3 -->
+        <section>
+          <h4><i class="fas fa-sync-alt" style="color:#009688;"></i> Keberlanjutan & Skalabilitas</h4>
+          <ul class="text-left">
+            <li>Menyusun renstra riset/pengabdian jangka panjang (5–10 tahun) yang lebih luas</li>
+            <li>Menjadi rujukan (center of excellence) dalam pengembangan Smart City dan EBT</li>
+          </ul>
+        </section>
+
+        <!-- Sub-slide Vertical 4 -->
+        <section>
+          <h4>Output Utama di Tahun 5</h4>
+          <ul class="smaller-text text-left">
+            <li>Produk dan layanan hasil riset menjadi market-ready serta diadopsi oleh masyarakat</li>
+            <li>Pusat Riset dan Inovasi Smart City & Energi di ITK diakui secara nasional/internasional</li>
+            <li>Tercapainya visi ITK dan LPPM untuk berperan aktif dalam pembangunan daerah</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- ======================== -->
+      <!--   KETERKAITAN 4 PRODI   -->
+      <!-- ======================== -->
+      <section data-background-transition="zoom">
+        <h3>Keterkaitan Empat Prodi dalam Fokus Smart City & Energi</h3>
+        <div class="r-stack">
+          <!-- Teknik Elektro -->
+          <div class="fragment fade-in-then-out">
+            <div class="text-left">
+              <h4 class="highlight"><i class="fas fa-plug" style="color:#4caf50;"></i> Teknik Elektro</h4>
+              <ul>
+                <li>Smart Grid, Microgrid, Power Electronics</li>
+                <li>Sistem kontrol IoT, sensor & hardware</li>
+                <li>Rekayasa pembangkit EBT (surya, angin, biomassa, dll.)</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Informatika -->
+          <div class="fragment fade-in-then-out">
+            <div class="text-left">
+              <h4 class="highlight"><i class="fas fa-code" style="color:#2196f3;"></i> Informatika</h4>
+              <ul>
+                <li>Software development, AI/ML, Big Data Analytics</li>
+                <li>Cloud computing, keamanan siber</li>
+                <li>Aplikasi Smart City (e-gov, e-health, dsb.)</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Sistem Informasi -->
+          <div class="fragment fade-in-then-out">
+            <div class="text-left">
+              <h4 class="highlight"><i class="fas fa-database" style="color:#ff9800;"></i> Sistem Informasi</h4>
+              <ul>
+                <li>Desain & integrasi sistem, manajemen data</li>
+                <li>IT governance, business process reengineering</li>
+                <li>User experience, analisis dampak kebijakan</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Bisnis Digital -->
+          <div class="fragment fade-in">
+            <div class="text-left">
+              <h4 class="highlight"><i class="fas fa-business-time" style="color:#9c27b0;"></i> Bisnis Digital</h4>
+              <ul>
+                <li>Model bisnis inovatif (green economy, digital finance, dsb.)</li>
+                <li>Digital marketing, startup & inkubasi bisnis</li>
+                <li>Studi kelayakan ekonomi & strategi komersialisasi</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== -->
+      <!--     SUCCESS FACTORS     -->
+      <!-- ======================== -->
+      <section data-background-transition="slide">
+        <h3>Kunci Kesuksesan</h3>
+        <ul class="fragment fade-up">
+          <li>Tim Ahli Lintas Prodi</li>
+          <li>Kolaborasi Stakeholder</li>
+          <li>Pendanaan Berkelanjutan</li>
+          <li>Monitoring & Evaluasi</li>
+        </ul>
+      </section>
+
+      <!-- ======================== -->
+      <!--         CLOSING         -->
+      <!-- ======================== -->
+      <section data-background-gradient="radial-gradient(circle, #4527A0, #283593)">
+        <h3>Terima Kasih</h3>
+        <p class="fragment">Menuju ITK yang Unggul dan Berdaya Saing</p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js JS -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"
+  ></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      responsive: true,
+      touch: true,
+      mouseWheel: true,
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      autoSlide: 0,
+      controls: true,
+      progress: true,
+      center: true,
+      slideNumber: 'c/t',
+      overview: true,
+      width: 1200,
+      height: 700,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2.0,
+      plugins: [
+        {
+          src:
+            'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/zoom/zoom.min.js',
+          async: true
+        },
+        {
+          src:
+            'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js',
+          async: true
+        },
+        {
+          src:
+            'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/search/search.min.js',
+          async: true
+        },
+        {
+          src:
+            'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.min.js',
+          async: true
+        }
+      ],
+      keyboard: {
+        13: 'next', // Enter key
+        27: function () {}, // Esc key (no action)
+        32: function () {
+          Reveal.toggleOverview();
+        }, // Space key toggles overview
+        37: 'prev', // Left arrow
+        39: 'next' // Right arrow
+      }
+    });
+  </script>
 </body>
 </html>
