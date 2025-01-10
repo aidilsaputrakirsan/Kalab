@@ -1,103 +1,286 @@
-<!doctype html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Roadmap ITK 2025</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Reveal.js CSS -->
-    <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
-    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/black.css" id="theme">
-
-    <!-- Reveal.js Plugins CSS (contoh: Markdown, Highlight) -->
-    <link rel="stylesheet" href="node_modules/reveal.js/plugin/highlight/monokai.css">
-    
-    <!-- Custom CSS -->
+    <title>ITK Roadmap Presentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/night.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Tambahkan gaya kustom jika diperlukan */
+        .reveal section img {
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .custom-fragment {
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        .custom-fragment.visible {
+            opacity: 1;
+        }
+        .text-left {
+            text-align: left;
+        }
+        .smaller-text {
+            font-size: 0.8em;
+        }
+        .highlight {
+            color: #42affa;
+        }
+        .r-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="reveal">
         <div class="slides">
-            <!-- Slide 1: Judul -->
-            <section>
-                <h1>Roadmap ITK 2025</h1>
-                <p>Menjadi perguruan tinggi unggul di Kalimantan</p>
-            </section>
-
-            <!-- Slide 2: Tujuan Umum -->
-            <section>
-                <h2>Tujuan Umum Roadmap</h2>
-                <ul>
-                    <li>Mendukung Visi ITK 2025</li>
-                    <li>Mendukung Visi LPPM ITK</li>
-                    <li>Mendorong Kolaborasi 4 Prodi</li>
+            <!-- Title Slide -->
+            <section data-auto-animate>
+                <h2>ROADMAP ITK 2025</h2> <!-- h1 → h2 -->
+                <h4>Smart City & Energi Terbarukan</h4> <!-- h3 → h4 -->
+                <p class="fragment fade-up">Kolaborasi 4 Program Studi</p>
+                <ul class="fragment fade-up">
+                    <li>Teknik Elektro</li>
+                    <li>Informatika</li>
+                    <li>Sistem Informasi</li>
+                    <li>Bisnis Digital</li>
                 </ul>
             </section>
 
-            <!-- Slide 3: Mendukung Visi ITK 2025 -->
-            <section>
-                <h3>Mendukung Visi ITK 2025</h3>
-                <blockquote>
-                    “Menjadi perguruan tinggi yang unggul dan berperan aktif dalam pembangunan nasional melalui pemberdayaan potensi daerah Kalimantan.”
-                </blockquote>
+            <!-- Vision Section -->
+            <section data-background-gradient="linear-gradient(to bottom, #283593, #1565C0)">
+                <section>
+                    <h3>Visi ITK 2025</h3> <!-- h2 → h3 -->
+                    <blockquote class="fragment">
+                        "Menjadi perguruan tinggi yang unggul dan berperan aktif dalam pembangunan nasional melalui pemberdayaan potensi daerah Kalimantan."
+                    </blockquote>
+                </section>
+                <section>
+                    <h3>Visi LPPM ITK</h3> <!-- h2 → h3 -->
+                    <blockquote class="fragment">
+                        "Menjadi lembaga penelitian dan pengabdian kepada masyarakat yang unggul, terpercaya dalam bidang IPTEK serta mampu berperan aktif dalam pembangunan daerah."
+                    </blockquote>
+                </section>
             </section>
 
-            <!-- Tambahkan slide-slide berikutnya sesuai roadmap -->
-            <!-- Contoh: Garis Besar Strategi -->
+            <!-- Strategy Overview -->
             <section>
-                <h2>Garis Besar Strategi</h2>
-                <ul>
-                    <li>Penelitian dan Inovasi</li>
-                    <li>Pengabdian Masyarakat dan Kerja Sama</li>
-                    <li>Penguatan Kompetensi SDM</li>
-                    <li>Pembangunan Infrastruktur Pendukung</li>
-                    <li>Penerapan dan Komersialisasi</li>
+                <h3>Garis Besar Strategi</h3> <!-- h2 → h3 -->
+                <div class="r-stack">
+                    <div class="fragment fade-in-then-out">
+                        <h4>Penelitian dan Inovasi</h4> <!-- h3 → h4 -->
+                        <ul class="text-left">
+                            <li>Riset unggulan lintas prodi</li>
+                            <li>Publikasi ilmiah & HKI</li>
+                        </ul>
+                    </div>
+                    <div class="fragment fade-in-then-out">
+                        <h4>Pengabdian & Kerja Sama</h4> <!-- h3 → h4 -->
+                        <ul class="text-left">
+                            <li>Program pendampingan</li>
+                            <li>Jejaring kolaborasi</li>
+                        </ul>
+                    </div>
+                    <div class="fragment fade-in-then-out">
+                        <h4>Penguatan SDM</h4> <!-- h3 → h4 -->
+                        <ul class="text-left">
+                            <li>Sertifikasi & pelatihan</li>
+                            <li>Lulusan berdaya saing</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timeline Section - Year 1 -->
+            <section data-auto-animate>
+                <h3><i class="fas fa-road"></i> Tahun 1: Fundamental & Penyelarasan</h3> <!-- h2 → h3 -->
+                <div class="timeline">
+                    <div class="fragment fade-up">
+                        <h4><i class="fas fa-plug"></i> Teknik Elektro</h4> <!-- h3 → h4 -->
+                        <ul class="smaller-text text-left">
+                            <li>Pemetaan riset EBT</li>
+                            <li>Identifikasi infrastruktur kelistrikan</li>
+                        </ul>
+                    </div>
+                    <div class="fragment fade-up">
+                        <h4><i class="fas fa-laptop-code"></i> Informatika</h4> <!-- h3 → h4 -->
+                        <ul class="smaller-text text-left">
+                            <li>Riset IoT, AI, Big Data</li>
+                            <li>Pengembangan kurikulum</li>
+                        </ul>
+                    </div>
+                    <div class="fragment fade-up">
+                        <h4><i class="fas fa-database"></i> Sistem Informasi</h4> <!-- h3 → h4 -->
+                        <ul class="smaller-text text-left">
+                            <li>Tata kelola data</li>
+                            <li>Blueprint kebutuhan informasi</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timeline Section - Year 2 -->
+            <section data-auto-animate>
+                <h3><i class="fas fa-layer-group"></i> Tahun 2: Penguatan Riset & Infrastruktur</h3> <!-- h2 → h3 -->
+                <div class="r-stack">
+                    <div class="fragment fade-in-then-out">
+                        <h4><i class="fas fa-flask"></i> Pengembangan Lab</h4> <!-- h3 → h4 -->
+                        <ul class="text-left">
+                            <li>Smart City Lab</li>
+                            <li>Smart Energy Lab</li>
+                        </ul>
+                    </div>
+                    <div class="fragment fade-in-then-out">
+                        <h4><i class="fas fa-users"></i> Kolaborasi</h4> <!-- h3 → h4 -->
+                        <ul class="text-left">
+                            <li>Proposal riset kolaboratif</li>
+                            <li>Studi kelayakan EBT</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timeline Section - Year 3 -->
+            <section data-auto-animate>
+                <h3><i class="fas fa-rocket"></i> Tahun 3: Implementasi & Kolaborasi</h3> <!-- h2 → h3 -->
+                <div class="fragment fade-up">
+                    <h4><i class="fas fa-city"></i> Pilot Project Smart City</h4> <!-- h3 → h4 -->
+                    <ul class="text-left">
+                        <li>Smart Governance</li>
+                        <li>Smart Environment</li>
+                    </ul>
+                </div>
+                <div class="fragment fade-up">
+                    <h4><i class="fas fa-solar-panel"></i> Pilot Project EBT</h4> <!-- h3 → h4 -->
+                    <ul class="text-left">
+                        <li>Instalasi panel surya</li>
+                        <li>Sistem monitoring IoT</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Timeline Section - Year 4 -->
+            <section data-auto-animate>
+                <h3><i class="fas fa-expand-arrows-alt"></i> Tahun 4: Ekspansi & Optimalisasi</h3> <!-- h2 → h3 -->
+                <div class="r-stack">
+                    <div class="fragment fade-in-then-out">
+                        <h4><i class="fas fa-project-diagram"></i> Ekspansi Project</h4> <!-- h3 → h4 -->
+                        <ul class="text-left">
+                            <li>Perluasan pilot project</li>
+                            <li>Optimalisasi sistem integrasi</li>
+                        </ul>
+                    </div>
+                    <div class="fragment fade-in-then-out">
+                        <h4><i class="fas fa-graduation-cap"></i> Reputasi Akademik</h4> <!-- h3 → h4 -->
+                        <ul class="text-left">
+                            <li>Workshop internasional</li>
+                            <li>Publikasi Scopus</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timeline Section - Year 5 -->
+            <section data-auto-animate>
+                <h3><i class="fas fa-flag-checkered"></i> Tahun 5: Kemandirian & Keberlanjutan</h3> <!-- h2 → h3 -->
+                <div class="fragment fade-up">
+                    <h4><i class="fas fa-chart-line"></i> Kemandirian</h4> <!-- h3 → h4 -->
+                    <ul class="text-left">
+                        <li>Komersialisasi inovasi</li>
+                        <li>Inkubator bisnis digital</li>
+                    </ul>
+                </div>
+                <div class="fragment fade-up">
+                    <h4><i class="fas fa-globe"></i> Kolaborasi Internasional</h4> <!-- h3 → h4 -->
+                    <ul class="text-left">
+                        <li>Joint research</li>
+                        <li>Pengakuan internasional</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Program Integration -->
+            <section data-background-transition="zoom">
+                <h3>Keterkaitan Program Studi</h3> <!-- h2 → h3 -->
+                <div class="r-stack">
+                    <img src="/api/placeholder/800/600" alt="Integration Diagram" class="fragment fade-out" data-fragment-index="0">
+                    <div class="fragment fade-in" data-fragment-index="0">
+                        <div class="text-left">
+                            <h4 class="highlight">Teknik Elektro</h4> <!-- h3 → h4 -->
+                            <ul>
+                                <li>Smart Grid & Microgrid</li>
+                                <li>Sensor & IoT Hardware</li>
+                                <li>Pembangkit EBT</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Success Factors -->
+            <section data-background-transition="slide">
+                <h3>Kunci Kesuksesan</h3> <!-- h2 → h3 -->
+                <ul class="fragment fade-up">
+                    <li>Tim Ahli Lintas Prodi</li>
+                    <li>Kolaborasi Stakeholder</li>
+                    <li>Pendanaan Berkelanjutan</li>
+                    <li>Monitoring & Evaluasi</li>
                 </ul>
             </section>
 
-            <!-- Contoh: Rincian Roadmap Tahun 1 -->
-            <section>
-                <h2>Rincian Roadmap (Tahun 1)</h2>
-                <h3>Fundamental & Penyelarasan</h3>
-                <h4>Teknik Elektro</h4>
-                <ul>
-                    <li>Memetakan riset-riset EBT yang potensial untuk dikembangkan di laboratorium.</li>
-                    <li>Mengidentifikasi kebutuhan infrastruktur kelistrikan & instrumentasi untuk mendukung Smart City.</li>
-                </ul>
-                <!-- Tambahkan konten lainnya sesuai kebutuhan -->
+            <!-- Closing -->
+            <section data-background-gradient="radial-gradient(circle, #4527A0, #283593)">
+                <h3>Terima Kasih</h3> <!-- h2 → h3 -->
+                <p class="fragment">Menuju ITK yang Unggul dan Berdaya Saing</p>
             </section>
 
-            <!-- Tambahkan slide lainnya hingga Tahun 5 dan seterusnya -->
-            
-            <!-- Slide Penutup -->
-            <section>
-                <h2>Penutup</h2>
-                <p>Roadmap 5 tahun ini diharapkan dapat mempercepat tercapainya visi ITK, membantu LPPM ITK menjadi lembaga terkemuka, dan mewujudkan sinergi 4 prodi dalam menghasilkan solusi inovatif.</p>
-            </section>
         </div>
     </div>
 
-    <!-- Reveal.js JS -->
-    <script src="node_modules/reveal.js/dist/reveal.js"></script>
-
-    <!-- Reveal.js Plugins -->
-    <script src="node_modules/reveal.js/plugin/markdown/markdown.js"></script>
-    <script src="node_modules/reveal.js/plugin/notes/notes.js"></script>
-    <script src="node_modules/reveal.js/plugin/highlight/highlight.js"></script>
-    <script src="node_modules/reveal.js/plugin/zoom/zoom.js"></script>
-    <script src="node_modules/reveal.js/plugin/markdown/markdown.js"></script>
-
-    <!-- Inisialisasi Reveal.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
     <script>
         Reveal.initialize({
             hash: true,
-            plugins: [ RevealMarkdown, RevealNotes, RevealHighlight, RevealZoom ],
-            transition: 'slide', // Pilih efek transisi: none/fade/slide/convex/concave/zoom
-            theme: 'black', // Tema gelap
-            slideNumber: true, // Tampilkan nomor slide
-            // Tambahkan opsi lainnya sesuai kebutuhan
+            responsive: true,
+            touch: true,
+            mouseWheel: true,
+            transition: 'slide',
+            backgroundTransition: 'fade',
+            parallaxBackgroundImage: '',
+            autoSlide: 0,
+            controls: true,
+            progress: true,
+            center: true,
+            slideNumber: 'c/t',
+            overview: true,
+            width: 1200,
+            height: 700,
+            margin: 0.04,
+            minScale: 0.2,
+            maxScale: 2.0,
+            plugins: [
+                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/zoom/zoom.min.js', async: true },
+                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js', async: true },
+                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/search/search.min.js', async: true },
+                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.min.js', async: true }
+            ],
+            keyboard: {
+                13: 'next', // Enter key
+                27: function() {}, // Esc key (no action)
+                32: function() { Reveal.toggleOverview(); }, // Space key toggles overview
+                37: 'prev', // Left arrow
+                39: 'next', // Right arrow
+            },
+            // Additional configurations if needed
         });
     </script>
 </body>
