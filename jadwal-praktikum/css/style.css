@@ -208,6 +208,12 @@
     border-bottom-color: var(--dark-border);
   }
   
+  /* Rata tengah hanya untuk kolom "Minggu ke-" */
+  th:first-child, td:first-child {
+    text-align: center;
+    vertical-align: middle;
+  }
+
   tbody tr {
     transition: background-color 0.2s;
   }
