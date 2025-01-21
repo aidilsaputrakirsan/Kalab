@@ -8,136 +8,253 @@ const tableContainer = document.getElementById('tableContainer');
 const toggleThemeBtn = document.getElementById('toggleThemeBtn');
 const body = document.body;
 
-// Data Global (untuk memudahkan filter/pencarian)
-let originalData = []; // Menyimpan data mentah dari server (array 2D)
+// Data Global
+let originalData = [];
+let currentSort = {
+  column: null,
+  ascending: true
+};
 
 // ----------------------------------
-// 1. On Document Loaded
+// 1. Initialize
 // ----------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-  // Ambil data pertama kali (Lab Komputer A default)
+  // Load saved theme
+  loadTheme();
+  
+  // Fetch initial data
   fetchData(sheetSelect.value);
 
-  // Event: saat user pilih sheet lain
+  // Event Listeners
   sheetSelect.addEventListener('change', () => {
     const selectedSheet = sheetSelect.value;
     fetchData(selectedSheet);
   });
 
-  // Event: input search
-  searchInput.addEventListener('input', handleSearch);
-
-  // Event: toggle theme
+  searchInput.addEventListener('input', debounce(handleSearch, 300));
   toggleThemeBtn.addEventListener('click', toggleTheme);
 });
 
 // ----------------------------------
-// 2. Fetch Data dari Apps Script
+// 2. Data Fetching
 // ----------------------------------
 async function fetchData(sheetName) {
   try {
-    // Tampilkan loading
-    tableContainer.innerHTML = "<p>Loading data...</p>";
+    showLoadingState();
 
-    // Panggil Web App dengan querystring
     const url = `${WEB_APP_URL}?sheetName=${encodeURIComponent(sheetName)}`;
     const response = await fetch(url);
     const json = await response.json();
 
     if (json.error) {
-      // Tampilkan error
-      tableContainer.innerHTML = `<p style="color:red;font-weight:bold;">${json.error}</p>`;
+      showError(json.error);
       originalData = [];
     } else {
-      // Simpan data
       originalData = json.values || [];
-
-      // Render tabel awal (belum difilter)
       renderTable(originalData);
     }
   } catch (err) {
     console.error(err);
-    tableContainer.innerHTML = `<p style="color:red;font-weight:bold;">Gagal mengambil data.</p>`;
+    showError('Gagal mengambil data. Silakan coba lagi.');
     originalData = [];
   }
 }
 
 // ----------------------------------
-// 3. Render Tabel
+// 3. Table Rendering
 // ----------------------------------
 function renderTable(dataArray) {
-  // dataArray: array 2D, baris pertama = header
   if (!dataArray || dataArray.length === 0) {
-    tableContainer.innerHTML = "<p>Tidak ada data.</p>";
+    tableContainer.innerHTML = createEmptyState();
     return;
   }
 
   const headers = dataArray[0];
   const rows = dataArray.slice(1);
 
-  // Bangun HTML table
   let html = "<table>";
-  // HEADER
+  
+  // Headers with sort buttons
   html += "<thead><tr>";
-  headers.forEach(h => {
-    html += `<th>${h}</th>`;
+  headers.forEach((header, index) => {
+    const sortIcon = getSortIcon(index);
+    html += `
+      <th>
+        <div class="header-content" onclick="handleSort(${index})">
+          ${header}
+          ${sortIcon}
+        </div>
+      </th>
+    `;
   });
   html += "</tr></thead>";
-  // BODY
+  
+  // Table body with rows
   html += "<tbody>";
   rows.forEach(row => {
     html += "<tr>";
     row.forEach(cell => {
-      html += `<td>${cell}</td>`;
+      html += `<td>${formatCell(cell)}</td>`;
     });
     html += "</tr>";
   });
-  html += "</tbody>";
+  html += "</tbody></table>";
 
-  html += "</table>";
   tableContainer.innerHTML = html;
 }
 
 // ----------------------------------
-// 4. Filter Data (Search Input)
+// 4. Sorting Functions
+// ----------------------------------
+function handleSort(columnIndex) {
+  if (currentSort.column === columnIndex) {
+    // Toggle sort direction if clicking same column
+    currentSort.ascending = !currentSort.ascending;
+  } else {
+    // Set new sort column
+    currentSort.column = columnIndex;
+    currentSort.ascending = true;
+  }
+
+  // Get headers and data rows
+  const headers = originalData[0];
+  const rows = originalData.slice(1);
+
+  // Sort the rows
+  const sortedRows = rows.sort((a, b) => {
+    const aVal = a[columnIndex];
+    const bVal = b[columnIndex];
+    
+    // Try to sort as numbers if possible
+    const aNum = Number(aVal);
+    const bNum = Number(bVal);
+    
+    if (!isNaN(aNum) && !isNaN(bNum)) {
+      return currentSort.ascending ? aNum - bNum : bNum - aNum;
+    }
+    
+    // Otherwise sort as strings
+    return currentSort.ascending 
+      ? String(aVal).localeCompare(String(bVal))
+      : String(bVal).localeCompare(String(aVal));
+  });
+
+  // Combine headers with sorted rows
+  const sortedData = [headers, ...sortedRows];
+  renderTable(sortedData);
+}
+
+function getSortIcon(columnIndex) {
+  if (currentSort.column !== columnIndex) {
+    return '<span class="sort-icon">↕️</span>';
+  }
+  return currentSort.ascending 
+    ? '<span class="sort-icon">↑</span>'
+    : '<span class="sort-icon">↓</span>';
+}
+
+// ----------------------------------
+// 5. Search/Filter Function
 // ----------------------------------
 function handleSearch() {
-  const query = searchInput.value.toLowerCase();
+  const query = searchInput.value.toLowerCase().trim();
 
-  // Jika tidak ada data atau header
   if (!originalData || originalData.length === 0) {
     return;
   }
 
-  // Pisahkan header dan rows
   const headers = originalData[0];
   const rows = originalData.slice(1);
 
-  // Filter rows yang mengandung `query` di salah satu kolom
+  if (!query) {
+    renderTable(originalData);
+    return;
+  }
+
   const filtered = rows.filter(row => {
-    return row.some(cell => {
-      return String(cell).toLowerCase().includes(query);
-    });
+    return row.some(cell => 
+      String(cell).toLowerCase().includes(query)
+    );
   });
 
-  // Gabungkan lagi header + filtered rows
-  const newData = [headers, ...filtered];
-
-  // Render hasil filter
-  renderTable(newData);
+  renderTable([headers, ...filtered]);
 }
 
 // ----------------------------------
-// 5. Toggle Theme (Dark / Light)
+// 6. Theme Functions
 // ----------------------------------
 function toggleTheme() {
-  if (body.classList.contains('light-mode')) {
-    body.classList.remove('light-mode');
-    body.classList.add('dark-mode');
-    toggleThemeBtn.textContent = "Light Mode";
-  } else {
-    body.classList.remove('dark-mode');
-    body.classList.add('light-mode');
-    toggleThemeBtn.textContent = "Dark Mode";
+  const isDark = body.classList.contains('light-mode');
+  const newTheme = isDark ? 'dark' : 'light';
+  
+  body.classList.remove(isDark ? 'light-mode' : 'dark-mode');
+  body.classList.add(isDark ? 'dark-mode' : 'light-mode');
+  
+  toggleThemeBtn.innerHTML = `
+    <span class="theme-icon">${isDark ? '☀️' : '🌙'}</span>
+    <span class="theme-text">${isDark ? 'Light Mode' : 'Dark Mode'}</span>
+  `;
+  
+  // Save theme preference
+  localStorage.setItem('theme', newTheme);
+}
+
+function loadTheme() {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  if (savedTheme === 'dark') {
+    toggleTheme();
   }
+}
+
+// ----------------------------------
+// 7. Utility Functions
+// ----------------------------------
+function formatCell(value) {
+  if (value === null || value === undefined) {
+    return '-';
+  }
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function showLoadingState() {
+  tableContainer.innerHTML = `
+    <div class="loading-state">
+      <div class="loading-spinner"></div>
+      <p>Memuat data...</p>
+    </div>
+  `;
+}
+
+function showError(message) {
+  tableContainer.innerHTML = `
+    <div class="error-state">
+      <p>❌ ${message}</p>
+    </div>
+  `;
+}
+
+function createEmptyState() {
+  return `
+    <div class="empty-state">
+      <p>Tidak ada data yang ditemukan</p>
+    </div>
+  `;
+}
+
+// Debounce utility untuk search input
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
 }
