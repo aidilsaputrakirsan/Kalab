@@ -50,7 +50,12 @@ async function fetchData(sheetName) {
       showError(json.error);
       originalData = [];
     } else {
-      originalData = json.values || [];
+      // Validasi data sebelum disimpan
+      originalData = json.values.map(row => {
+        row[0] = isNaN(row[0]) ? row[0] : String(row[0]); // Pastikan Minggu ke- adalah teks
+        return row;
+      });
+
       renderTable(originalData);
     }
   } catch (err) {
@@ -221,12 +226,17 @@ function formatCell(value) {
   if (value === null || value === undefined) {
     return '-';
   }
-  
-  // Coba format sebagai tanggal
+
+  // Jika nilai adalah angka minggu (tidak tanggal)
+  if (!isNaN(value) && value.length === 1) {
+    return value; // Kembalikan nilai apa adanya
+  }
+
+  // Coba format sebagai tanggal (hanya jika valid ISO string atau format tanggal)
   if (!isNaN(Date.parse(value))) {
     return formatDate(value);
   }
-  
+
   // Jika bukan tanggal, escape karakter spesial
   return String(value)
     .replace(/&/g, '&amp;')
