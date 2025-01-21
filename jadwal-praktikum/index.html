@@ -3,176 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jadwal Lab Komputer</title>
+  <title>Jadwal 7 Lab Komputer</title>
 
-  <style>
-    /* ----- Gaya Dasar ----- */
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    header {
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .light-mode {
-      background-color: #fefefe;
-      color: #333;
-    }
-    .dark-mode {
-      background-color: #212121;
-      color: #f1f1f1;
-    }
-
-    .container {
-      padding: 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .dropdown {
-      margin-bottom: 1rem;
-    }
-
-    /* Table responsif */
-    .table-container {
-      overflow-x: auto;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 600px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 0.5rem 1rem;
-      text-align: left;
-    }
-    th {
-      background-color: #eee;
-    }
-    /* Mode gelap: latar belakang header table */
-    .dark-mode th {
-      background-color: #333;
-    }
-
-    .error {
-      color: red;
-      font-weight: bold;
-    }
-  </style>
+  <!-- Import CSS -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="light-mode">
-  <header>
-    <h1>Jadwal Lab Komputer</h1>
-    <button id="toggleModeBtn">Dark Mode</button>
-  </header>
-
-  <div class="container">
-    <div class="dropdown">
-      <label for="sheetSelect">Pilih Lab: </label>
-      <select id="sheetSelect">
-        <option>Lab Komputer A</option>
-        <option>Lab Komputer B</option>
-        <option>Lab Komputer C</option>
-      </select>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-logo">Lab Schedule</div>
+    <div class="nav-actions">
+      <!-- Tombol Toggle Dark/Light -->
+      <button id="toggleThemeBtn" class="theme-button">Dark Mode</button>
     </div>
+  </nav>
 
-    <div class="table-container" id="tableContainer"></div>
-  </div>
+  <!-- BAGIAN UTAMA -->
+  <main class="container">
+    <section class="controls">
+      <div class="dropdown-container">
+        <label for="sheetSelect">Pilih Lab:</label>
+        <select id="sheetSelect">
+          <option>Lab Komputer A</option>
+          <option>Lab Komputer B</option>
+          <option>Lab Komputer C</option>
+          <option>Lab Komputer D</option>
+          <option>Lab Komputer E</option>
+          <option>Lab Komputer F</option>
+          <option>Lab Komputer G</option>
+        </select>
+      </div>
 
-  <script>
-    // ---- URL Apps Script Web App ----
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby11lBEhjcrEW96bsri1yZiKsG9pexlr26PNCVk5_w-HxKdvVDqho_0Hq2dXhHEWXa6Nw/exec";
+      <!-- Fitur Search/Filter Data -->
+      <div class="search-container">
+        <label for="searchInput">Cari:</label>
+        <input type="text" id="searchInput" placeholder="Filter data...">
+      </div>
+    </section>
 
-    // Elemen DOM
-    const sheetSelect = document.getElementById('sheetSelect');
-    const tableContainer = document.getElementById('tableContainer');
-    const toggleModeBtn = document.getElementById('toggleModeBtn');
-    const body = document.body;
+    <section class="table-section">
+      <div class="table-container" id="tableContainer">
+        <!-- Tabel akan dirender oleh JavaScript -->
+      </div>
+    </section>
+  </main>
 
-    // Saat halaman pertama kali load, fetch data default
-    document.addEventListener('DOMContentLoaded', () => {
-      fetchData(sheetSelect.value);
-    });
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 Jadwal Lab Komputer</p>
+  </footer>
 
-    // Saat dropdown berubah
-    sheetSelect.addEventListener('change', (e) => {
-      const sheetName = e.target.value;
-      fetchData(sheetName);
-    });
-
-    // Fungsi fetch data dari Apps Script
-    async function fetchData(sheetName) {
-      try {
-        // Param sheetName dikirim via querystring
-        const url = `${WEB_APP_URL}?sheetName=${encodeURIComponent(sheetName)}`;
-        const response = await fetch(url);
-        const json = await response.json();
-
-        if (json.error) {
-          // Kalau ada error dari server
-          tableContainer.innerHTML = `<p class="error">${json.error}</p>`;
-        } else {
-          // Tampilkan data
-          renderTable(json.values);
-        }
-      } catch (err) {
-        console.error(err);
-        tableContainer.innerHTML = `<p class="error">Gagal mengambil data</p>`;
-      }
-    }
-
-    // Fungsi menampilkan data ke tabel
-    function renderTable(data) {
-      if (!data || data.length === 0) {
-        tableContainer.innerHTML = "<p>Tidak ada data.</p>";
-        return;
-      }
-
-      // Asumsikan baris pertama sebagai header
-      const headers = data[0];
-      const rows = data.slice(1);
-
-      let html = '<table>';
-      html += '<thead><tr>';
-      headers.forEach(header => {
-        html += `<th>${header}</th>`;
-      });
-      html += '</tr></thead>';
-
-      html += '<tbody>';
-      rows.forEach(row => {
-        html += '<tr>';
-        row.forEach(cell => {
-          html += `<td>${cell}</td>`;
-        });
-        html += '</tr>';
-      });
-      html += '</tbody>';
-
-      html += '</table>';
-
-      tableContainer.innerHTML = html;
-    }
-
-    // Toggle Mode Gelap/Terang
-    toggleModeBtn.addEventListener('click', () => {
-      if (body.classList.contains('light-mode')) {
-        body.classList.remove('light-mode');
-        body.classList.add('dark-mode');
-        toggleModeBtn.textContent = "Light Mode";
-      } else {
-        body.classList.remove('dark-mode');
-        body.classList.add('light-mode');
-        toggleModeBtn.textContent = "Dark Mode";
-      }
-    });
-  </script>
+  <!-- Import JS -->
+  <script src="js/script.js"></script>
 </body>
 </html>
