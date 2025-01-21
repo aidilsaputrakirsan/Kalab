@@ -209,10 +209,25 @@ function loadTheme() {
 // ----------------------------------
 // 7. Utility Functions
 // ----------------------------------
+function formatDate(isoString) {
+  const date = new Date(isoString);
+  if (isNaN(date.getTime())) return isoString; // Jika bukan tanggal, kembalikan nilai asli
+
+  const options = { day: '2-digit', month: 'long', year: 'numeric' };
+  return date.toLocaleDateString('id-ID', options);
+}
+
 function formatCell(value) {
   if (value === null || value === undefined) {
     return '-';
   }
+  
+  // Coba format sebagai tanggal
+  if (!isNaN(Date.parse(value))) {
+    return formatDate(value);
+  }
+  
+  // Jika bukan tanggal, escape karakter spesial
   return String(value)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
