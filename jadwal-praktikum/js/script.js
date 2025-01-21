@@ -228,7 +228,7 @@ function formatCell(value) {
   }
 
   // Jika nilai adalah angka minggu (tidak tanggal)
-  if (!isNaN(value) && value.length === 1) {
+  if (!isNaN(value) && value.length <= 2) {
     return value; // Kembalikan nilai apa adanya
   }
 
