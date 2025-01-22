@@ -359,3 +359,19 @@
   .table-container {
     animation: fadeIn 0.3s ease-out;
   }
+
+  /* Kotak dengan teks bold untuk grup "Minggu Ke" */
+  .week-group {
+    font-weight: bold;
+    text-align: center;
+    background-color: var(--light-surface); /* Warna latar belakang */
+    border: 2px solid var(--primary-color); /* Border warna utama */
+    border-radius: 5px; /* Sedikit melengkung */
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .dark-mode .week-group {
+    background-color: var(--dark-surface);
+    border-color: var(--secondary-color); /* Warna border dalam dark mode */
+  }
