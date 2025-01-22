@@ -79,7 +79,7 @@ function renderTable(dataArray) {
 
   let html = "<table>";
   
-  // Headers with sort buttons
+  // Headers
   html += "<thead><tr>";
   headers.forEach((header, index) => {
     const sortIcon = getSortIcon(index);
@@ -94,19 +94,36 @@ function renderTable(dataArray) {
   });
   html += "</tr></thead>";
   
-  // Table body with rows
+  // Table body
   html += "<tbody>";
-  rows.forEach(row => {
+
+  let currentWeek = null; // Variable untuk melacak minggu saat ini
+  rows.forEach((row) => {
+    if (row[0] !== currentWeek) {
+      // Jika "Minggu Ke" berubah, tambahkan elemen grup baru
+      currentWeek = row[0];
+      html += `
+        <tr>
+          <td colspan="${headers.length}" class="week-group">
+            Minggu Ke-${currentWeek}
+          </td>
+        </tr>
+      `;
+    }
+
+    // Tambahkan baris data
     html += "<tr>";
-    row.forEach(cell => {
+    row.forEach((cell) => {
       html += `<td>${formatCell(cell)}</td>`;
     });
     html += "</tr>";
   });
+
   html += "</tbody></table>";
 
   tableContainer.innerHTML = html;
 }
+
 
 // ----------------------------------
 // 4. Sorting Functions
