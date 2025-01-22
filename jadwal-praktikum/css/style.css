@@ -189,7 +189,7 @@
     font-size: 0.75rem;
     letter-spacing: 0.05em;
     padding: 1rem;
-    text-align: left;
+    text-align: center;
     border-bottom: 2px solid var(--light-border);
   }
   
@@ -202,6 +202,7 @@
   td {
     padding: 1rem;
     border-bottom: 1px solid var(--light-border);
+    text-align: center; /* Ditambahkan center-align */
   }
   
   .dark-mode td {
@@ -209,11 +210,12 @@
   }
   
   /* Rata tengah hanya untuk kolom "Minggu ke-" */
+  /*
   th:first-child, td:first-child {
     text-align: center;
     vertical-align: middle;
   }
-
+*/
   tbody tr {
     transition: background-color 0.2s;
   }
