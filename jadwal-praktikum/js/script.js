@@ -1,38 +1,39 @@
 // Ganti dengan URL Apps Script Anda
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby11lBEhjcrEW96bsri1yZiKsG9pexlr26PNCVk5_w-HxKdvVDqho_0Hq2dXhHEWXa6Nw/exec";
+const WEB_APP_URL =
+  "https://script.google.com/macros/s/AKfycby11lBEhjcrEW96bsri1yZiKsG9pexlr26PNCVk5_w-HxKdvVDqho_0Hq2dXhHEWXa6Nw/exec";
 
 // DOM Elements
-const sheetSelect = document.getElementById('sheetSelect');
-const searchInput = document.getElementById('searchInput');
-const tableContainer = document.getElementById('tableContainer');
-const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+const sheetSelect = document.getElementById("sheetSelect");
+const searchInput = document.getElementById("searchInput");
+const tableContainer = document.getElementById("tableContainer");
+const toggleThemeBtn = document.getElementById("toggleThemeBtn");
 const body = document.body;
 
 // Data Global
 let originalData = [];
 let currentSort = {
   column: null,
-  ascending: true
+  ascending: true,
 };
 
 // ----------------------------------
 // 1. Initialize
 // ----------------------------------
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Load saved theme
   loadTheme();
-  
+
   // Fetch initial data
   fetchData(sheetSelect.value);
 
   // Event Listeners
-  sheetSelect.addEventListener('change', () => {
+  sheetSelect.addEventListener("change", () => {
     const selectedSheet = sheetSelect.value;
     fetchData(selectedSheet);
   });
 
-  searchInput.addEventListener('input', debounce(handleSearch, 300));
-  toggleThemeBtn.addEventListener('click', toggleTheme);
+  searchInput.addEventListener("input", debounce(handleSearch, 300));
+  toggleThemeBtn.addEventListener("click", toggleTheme);
 });
 
 // ----------------------------------
@@ -51,7 +52,7 @@ async function fetchData(sheetName) {
       originalData = [];
     } else {
       // Validasi data sebelum disimpan
-      originalData = json.values.map(row => {
+      originalData = json.values.map((row) => {
         row[0] = isNaN(row[0]) ? row[0] : String(row[0]); // Pastikan Minggu ke- adalah teks
         return row;
       });
@@ -60,7 +61,7 @@ async function fetchData(sheetName) {
     }
   } catch (err) {
     console.error(err);
-    showError('Gagal mengambil data. Silakan coba lagi.');
+    showError("Gagal mengambil data. Silakan coba lagi.");
     originalData = [];
   }
 }
@@ -78,7 +79,7 @@ function renderTable(dataArray) {
   const rows = dataArray.slice(1);
 
   let html = "<table>";
-  
+
   // Headers
   html += "<thead><tr>";
   headers.forEach((header, index) => {
@@ -93,14 +94,13 @@ function renderTable(dataArray) {
     `;
   });
   html += "</tr></thead>";
-  
+
   // Table body
   html += "<tbody>";
 
-  let currentWeek = null; // Variable untuk melacak minggu saat ini
+  let currentWeek = null; // Melacak minggu saat ini
   rows.forEach((row) => {
     if (row[0] !== currentWeek) {
-      // Jika "Minggu Ke" berubah, tambahkan elemen grup baru
       currentWeek = row[0];
       html += `
         <tr>
@@ -111,7 +111,6 @@ function renderTable(dataArray) {
       `;
     }
 
-    // Tambahkan baris data
     html += "<tr>";
     row.forEach((cell) => {
       html += `<td>${formatCell(cell)}</td>`;
@@ -124,44 +123,37 @@ function renderTable(dataArray) {
   tableContainer.innerHTML = html;
 }
 
-
 // ----------------------------------
 // 4. Sorting Functions
 // ----------------------------------
 function handleSort(columnIndex) {
   if (currentSort.column === columnIndex) {
-    // Toggle sort direction if clicking same column
+    // Toggle arah sort jika kolom yang sama diklik
     currentSort.ascending = !currentSort.ascending;
   } else {
-    // Set new sort column
     currentSort.column = columnIndex;
     currentSort.ascending = true;
   }
 
-  // Get headers and data rows
   const headers = originalData[0];
   const rows = originalData.slice(1);
 
-  // Sort the rows
   const sortedRows = rows.sort((a, b) => {
     const aVal = a[columnIndex];
     const bVal = b[columnIndex];
-    
-    // Try to sort as numbers if possible
+
     const aNum = Number(aVal);
     const bNum = Number(bVal);
-    
+
     if (!isNaN(aNum) && !isNaN(bNum)) {
       return currentSort.ascending ? aNum - bNum : bNum - aNum;
     }
-    
-    // Otherwise sort as strings
-    return currentSort.ascending 
+
+    return currentSort.ascending
       ? String(aVal).localeCompare(String(bVal))
       : String(bVal).localeCompare(String(aVal));
   });
 
-  // Combine headers with sorted rows
   const sortedData = [headers, ...sortedRows];
   renderTable(sortedData);
 }
@@ -170,7 +162,7 @@ function getSortIcon(columnIndex) {
   if (currentSort.column !== columnIndex) {
     return '<span class="sort-icon">↕️</span>';
   }
-  return currentSort.ascending 
+  return currentSort.ascending
     ? '<span class="sort-icon">↑</span>'
     : '<span class="sort-icon">↓</span>';
 }
@@ -180,7 +172,6 @@ function getSortIcon(columnIndex) {
 // ----------------------------------
 function handleSearch() {
   const query = searchInput.value.toLowerCase().trim();
-
   if (!originalData || originalData.length === 0) {
     return;
   }
@@ -193,11 +184,9 @@ function handleSearch() {
     return;
   }
 
-  const filtered = rows.filter(row => {
-    return row.some(cell => 
-      String(cell).toLowerCase().includes(query)
-    );
-  });
+  const filtered = rows.filter((row) =>
+    row.some((cell) => String(cell).toLowerCase().includes(query))
+  );
 
   renderTable([headers, ...filtered]);
 }
@@ -206,24 +195,23 @@ function handleSearch() {
 // 6. Theme Functions
 // ----------------------------------
 function toggleTheme() {
-  const isDark = body.classList.contains('light-mode');
-  const newTheme = isDark ? 'dark' : 'light';
-  
-  body.classList.remove(isDark ? 'light-mode' : 'dark-mode');
-  body.classList.add(isDark ? 'dark-mode' : 'light-mode');
-  
+  const isDark = body.classList.contains("light-mode");
+  const newTheme = isDark ? "dark" : "light";
+
+  body.classList.remove(isDark ? "light-mode" : "dark-mode");
+  body.classList.add(isDark ? "dark-mode" : "light-mode");
+
   toggleThemeBtn.innerHTML = `
-    <span class="theme-icon">${isDark ? '☀️' : '🌙'}</span>
-    <span class="theme-text">${isDark ? 'Light Mode' : 'Dark Mode'}</span>
+    <span class="theme-icon">${isDark ? "☀️" : "🌙"}</span>
+    <span class="theme-text">${isDark ? "Light Mode" : "Dark Mode"}</span>
   `;
-  
-  // Save theme preference
-  localStorage.setItem('theme', newTheme);
+
+  localStorage.setItem("theme", newTheme);
 }
 
 function loadTheme() {
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  if (savedTheme === 'dark') {
+  const savedTheme = localStorage.getItem("theme") || "light";
+  if (savedTheme === "dark") {
     toggleTheme();
   }
 }
@@ -233,34 +221,30 @@ function loadTheme() {
 // ----------------------------------
 function formatDate(isoString) {
   const date = new Date(isoString);
-  if (isNaN(date.getTime())) return isoString; // Jika bukan tanggal, kembalikan nilai asli
-
-  const options = { day: '2-digit', month: 'long', year: 'numeric' };
-  return date.toLocaleDateString('id-ID', options);
+  if (isNaN(date.getTime())) return isoString;
+  const options = { day: "2-digit", month: "long", year: "numeric" };
+  return date.toLocaleDateString("id-ID", options);
 }
 
 function formatCell(value) {
   if (value === null || value === undefined) {
-    return '-';
+    return "-";
   }
 
-  // Jika nilai adalah angka minggu (tidak tanggal)
   if (!isNaN(value) && value.length <= 2) {
-    return value; // Kembalikan nilai apa adanya
+    return value;
   }
 
-  // Coba format sebagai tanggal (hanya jika valid ISO string atau format tanggal)
   if (!isNaN(Date.parse(value))) {
     return formatDate(value);
   }
 
-  // Jika bukan tanggal, escape karakter spesial
   return String(value)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 function showLoadingState() {
@@ -288,7 +272,7 @@ function createEmptyState() {
   `;
 }
 
-// Debounce utility untuk search input
+// Debounce untuk search input
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
