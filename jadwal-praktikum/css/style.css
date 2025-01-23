@@ -195,16 +195,14 @@ body::before {
 /*                   6. Table Styling                    */
 /* ----------------------------------------------------- */
 .table-section {
-  background: var(--light-surface);
-  border-radius: 0.75rem;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  border: 1px solid var(--light-border);
+  background: transparent;
+  border: none;
+  /* atau border: 1px solid var(--light-border); jika tetap butuh garis */
 }
-
 .dark-mode .table-section {
-  background: var(--dark-surface);
-  border-color: var(--dark-border);
+  background: transparent;
+  border: none;
+  /* atau border: 1px solid var(--dark-border); */
 }
 
 .table-container {
@@ -311,17 +309,12 @@ tbody tr:hover {
 /*                        8. Footer                      */
 /* ----------------------------------------------------- */
 .footer {
-  background-color: var(--light-surface);
-  border-top: 1px solid var(--light-border);
-  padding: 2rem;
-  text-align: center;
-  color: var(--light-text-secondary);
+  background-color: transparent;
+  border-top: none;
 }
-
 .dark-mode .footer {
-  background-color: var(--dark-surface);
-  border-color: var(--dark-border);
-  color: var(--dark-text-secondary);
+  background-color: transparent;
+  border-color: none;
 }
 
 /* ----------------------------------------------------- */
