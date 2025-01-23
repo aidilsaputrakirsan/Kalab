@@ -1,4 +1,6 @@
-/* Modern Variable Colors */
+/* ----------------------------------------------------- */
+/*              1. Warna Utama & Variabel CSS            */
+/* ----------------------------------------------------- */
 :root {
   --primary-color: #2563eb;
   --primary-hover: #1d4ed8;
@@ -25,50 +27,64 @@
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
 
-/* Base Reset */
+/* ----------------------------------------------------- */
+/*               2. Reset & Base Styling                 */
+/* ----------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Gradient Background (melalui pseudo-element) */
+/* Body */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  /* Agar konten berada di atas pseudo-element */
+  position: relative;
+  z-index: 0;
+  /* Transisi untuk smooth effect */
+  transition: color 0.3s, background-color 0.3s;
+}
+
+/* Hapus background solid agar gradient terlihat */
+.light-mode {
+  color: var(--light-text);
+  background-color: transparent !important;
+}
+
+.dark-mode {
+  color: var(--dark-text);
+  background-color: transparent !important;
+}
+
+/* ----------------------------------------------------- */
+/*          3. Gradient Background (Pseudo-element)      */
+/* ----------------------------------------------------- */
 body::before {
   content: "";
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   z-index: -1;
-  transition: background 0.5s ease; /* Animasi halus perubahan background */
+  /* Transisi halus perubahan background gradien */
+  transition: background 0.5s ease; 
 }
 
 /* Gradient untuk light mode */
 .light-mode::before {
+  /* Ubah jika ingin gradient lebih mencolok */
   background: linear-gradient(135deg, #f8fafc, #ffffff);
 }
 
 /* Gradient untuk dark mode */
 .dark-mode::before {
+  /* Ubah jika ingin gradient lebih kontras */
   background: linear-gradient(135deg, #0f172a, #1d293b);
 }
 
-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  line-height: 1.5;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-/* Theme Modes */
-.light-mode {
-  background-color: var(--light-bg);
-  color: var(--light-text);
-}
-
-.dark-mode {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
-}
-
-/* Navbar Styling */
+/* ----------------------------------------------------- */
+/*                      4. Navbar                        */
+/* ----------------------------------------------------- */
 .navbar {
   background: var(--primary-color);
   padding: 1rem;
@@ -111,7 +127,9 @@ body {
   transform: translateY(-1px);
 }
 
-/* Main Container */
+/* ----------------------------------------------------- */
+/*                   5. Main Container                   */
+/* ----------------------------------------------------- */
 .container {
   max-width: 1200px;
   margin: 2rem auto;
@@ -174,7 +192,9 @@ body {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-/* Table Styling */
+/* ----------------------------------------------------- */
+/*                   6. Table Styling                    */
+/* ----------------------------------------------------- */
 .table-section {
   background: var(--light-surface);
   border-radius: 0.75rem;
@@ -191,6 +211,7 @@ body {
 .table-container {
   overflow-x: auto;
   padding: 1rem;
+  animation: fadeIn 0.3s ease-out;
 }
 
 table {
@@ -240,7 +261,9 @@ tbody tr:hover {
   background-color: rgba(37, 99, 235, 0.1);
 }
 
-/* Loading State */
+/* ----------------------------------------------------- */
+/*             7. State: Loading, Error, Empty           */
+/* ----------------------------------------------------- */
 .loading-state {
   display: flex;
   justify-content: center;
@@ -253,7 +276,41 @@ tbody tr:hover {
   color: var(--dark-text-secondary);
 }
 
-/* Footer */
+/* Loading Spinner */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--light-border);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-state,
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+}
+
+.empty-state {
+  padding: 3rem;
+  color: var(--light-text-secondary);
+}
+
+.dark-mode .empty-state {
+  color: var(--dark-text-secondary);
+}
+
+/* ----------------------------------------------------- */
+/*                        8. Footer                      */
+/* ----------------------------------------------------- */
 .footer {
   background-color: var(--light-surface);
   border-top: 1px solid var(--light-border);
@@ -268,7 +325,9 @@ tbody tr:hover {
   color: var(--dark-text-secondary);
 }
 
-/* Responsive Design */
+/* ----------------------------------------------------- */
+/*              9. Responsive Media Queries              */
+/* ----------------------------------------------------- */
 @media (max-width: 768px) {
   .navbar-content {
     flex-direction: column;
@@ -288,7 +347,9 @@ tbody tr:hover {
   }
 }
 
-/* Table Header Sorting */
+/* ----------------------------------------------------- */
+/*               10. Sorting Indicator Icons             */
+/* ----------------------------------------------------- */
 .header-content {
   display: flex;
   align-items: center;
@@ -310,51 +371,9 @@ tbody tr:hover {
   opacity: 1;
 }
 
-/* Loading Spinner */
-.loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid var(--light-border);
-  border-radius: 50%;
-  border-top-color: var(--primary-color);
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Error & Empty State */
-.error-state,
-.empty-state {
-  text-align: center;
-  padding: 2rem;
-}
-
-.empty-state {
-  padding: 3rem;
-  color: var(--light-text-secondary);
-}
-
-.dark-mode .empty-state {
-  color: var(--dark-text-secondary);
-}
-
-/* Theme Button Enhancement */
-.theme-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.theme-icon {
-  font-size: 1.1rem;
-}
-
-/* Animations */
+/* ----------------------------------------------------- */
+/*                    11. Animations                     */
+/* ----------------------------------------------------- */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -366,11 +385,9 @@ tbody tr:hover {
   }
 }
 
-.table-container {
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* Grup "Minggu Ke" */
+/* ----------------------------------------------------- */
+/*       12. Penanda "Minggu Ke" (row grouping)          */
+/* ----------------------------------------------------- */
 .week-group {
   font-weight: bold;
   text-align: center;
@@ -384,4 +401,17 @@ tbody tr:hover {
 .dark-mode .week-group {
   background-color: var(--dark-surface);
   border-color: var(--secondary-color);
+}
+
+/* ----------------------------------------------------- */
+/*        13. Tombol Switch Tema: Ikon & Teks            */
+/* ----------------------------------------------------- */
+.theme-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-icon {
+  font-size: 1.1rem;
 }
