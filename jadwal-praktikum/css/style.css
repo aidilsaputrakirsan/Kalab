@@ -72,9 +72,9 @@ body::before {
 
 /* Gradient untuk light mode */
 .light-mode::before {
-  /* Ubah jika ingin gradient lebih mencolok */
-  background: linear-gradient(135deg, #f8fafc, #ffffff);
+  background: linear-gradient(135deg, #f8fafc 20%, #ffffff 80%);
 }
+
 
 /* Gradient untuk dark mode */
 .dark-mode::before {
