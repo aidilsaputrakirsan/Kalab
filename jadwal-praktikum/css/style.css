@@ -70,17 +70,16 @@ body::before {
   transition: background 0.5s ease; 
 }
 
-/* Gradient untuk light mode */
 .light-mode::before {
-  background: linear-gradient(135deg, #f8fafc 20%, #ffffff 80%);
+  /* Uji coba warna kontras */
+  background: linear-gradient(135deg, red, yellow);
 }
 
-
-/* Gradient untuk dark mode */
 .dark-mode::before {
-  /* Ubah jika ingin gradient lebih kontras */
-  background: linear-gradient(135deg, #0f172a, #1d293b);
+  /* Uji coba warna kontras */
+  background: linear-gradient(135deg, blue, purple);
 }
+
 
 /* ----------------------------------------------------- */
 /*                      4. Navbar                        */
