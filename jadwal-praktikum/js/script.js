@@ -97,8 +97,8 @@ function renderTable(dataArray) {
 
   // Table body
   html += "<tbody>";
+  let currentWeek = null;
 
-  let currentWeek = null; // Melacak minggu saat ini
   rows.forEach((row) => {
     if (row[0] !== currentWeek) {
       currentWeek = row[0];
@@ -119,7 +119,6 @@ function renderTable(dataArray) {
   });
 
   html += "</tbody></table>";
-
   tableContainer.innerHTML = html;
 }
 
